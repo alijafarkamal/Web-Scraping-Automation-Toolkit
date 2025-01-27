@@ -1,3 +1,3 @@
 # Trojan-Scraper
-It will contain my scraping projects.
-I will soon upload my scraping source code files to this repo.
+This repo contains tasks and projects of web scraping and automation.
+I used Python with Selenium for this purpose here.

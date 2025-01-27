@@ -94,50 +94,5 @@ print(f"Movie details have been saved to {output_file}.")
 
 # pkill -f chrome
 # google-chrome --remote-debugging-port=9222
-# google-chrome --remote-debugging-port=9222
 
 # curl http://127.0.0.1:9222/json
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-# Path to ChromeDriver
-chromedriver_path = "/usr/local/bin/chromedriver"
-
-# Chrome options to attach to an existing session
-chrome_options = Options()
-chrome_options.debugger_address = "127.0.0.1:9222"
-
-# Set up the Chrome WebDriver
-service = Service(chromedriver_path)
-driver = webdriver.Chrome(service=service, options=chrome_options)
-
-# Confirm the current URL
-current_url = driver.current_url
-print(f"Current URL: {current_url}")
-
-try:
-    # Ensure the script is running on the desired page
-    if "http" not in current_url:
-        raise Exception("The browser is not on a valid webpage. Ensure the correct tab is active.")
-
-    # Wait for the dropdown to be present
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, "select[name='genre']"))
-    )
-
-    # Locate and interact with the dropdown
-    genre_dropdown = driver.find_element(By.CSS_SELECTOR, "select[name='genre']")
-    select = Select(genre_dropdown)
-    select.select_by_value("action")
-    print("Successfully selected 'Action' from the dropdown.")
-
-except Exception as e:
-    print(f"An error occurred: {e}")
-finally:
-    driver.quit()
-

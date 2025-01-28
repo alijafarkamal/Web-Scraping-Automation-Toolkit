@@ -8,8 +8,7 @@ def scrape_emails():
     chrome_options = Options()
 
     chrome_driver_path = '/usr/local/bin/chromedriver'
-
-    # Setup the WebDriver
+r
     service = Service(chrome_driver_path)
     driver = webdriver.Chrome(service=service, options=chrome_options)
 

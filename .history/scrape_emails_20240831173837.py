@@ -4,9 +4,12 @@ from selenium.webdriver.chrome.options import Options
 import re
 
 def scrape_emails():
-
+    # Setup Chrome options
     chrome_options = Options()
+    # Add options if needed
+    # chrome_options.add_argument("--headless")
 
+    # Path to the ChromeDriver executable
     chrome_driver_path = '/usr/local/bin/chromedriver'
 
     # Setup the WebDriver
